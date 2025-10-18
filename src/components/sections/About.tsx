@@ -9,7 +9,7 @@ const About = () => {
     {
       icon: Code2,
       title: "Clean code",
-      description: "Desenvolvo soluções modernas e elegantes seguindo as melhores práticas",
+      description: "Desenvolvo soluções modernas e elegantes seguindo as melhores práticas do mercado",
     },
     {
       icon: Palette,
