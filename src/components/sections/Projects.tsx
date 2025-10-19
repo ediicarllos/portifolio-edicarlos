@@ -3,6 +3,8 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useInView } from "@/hooks/useInView"
+import { useLanguage } from "@/components/LanguageProvider"
+import { translations } from "@/lib/translations"
 import project1 from "@/assets/project-1.png"
 import project2 from "@/assets/project-2.png";
 import project3 from "@/assets/project-3.png";
@@ -10,39 +12,37 @@ import project4 from "@/assets/project-4.png";
 
 const Projects = () => {
   const { ref, isInView } = useInView()
+  const { language } = useLanguage()
+  const t = translations[language].projects
   
   const projects = [
     {
-      title: "Landing Page Wind of the End",
-      description:
-        "Uma página de login moderna e animada para o projeto fictício Wind of the End",
+      title: t.project1.title,
+      description: t.project1.description,
       tech: ["HTML5", "CSS3", "JavaScript"],
       image: project1,
       github: "https://github.com/ediicarllos/Wind-of-the-End",
       demo: "https://ediicarllos.github.io/Wind-of-the-End/",
     },
     {
-      title: "Chat Bot com IA",
-      description:
-        "Chat bot inteligente utilizando OpenAI para respostas automatizadas",
+      title: t.project2.title,
+      description: t.project2.description,
       tech: ["TypeScript", "React", "CSS3", "Tailwind", "Vercel"],
       image: project2,
       github: "https://github.com/ediicarllos/Chat-bot-wih-IA",
       demo: "https://chat-bot-wih-ia.vercel.app/",
     },
     {
-      title: "Landing Page Psicóloga",
-      description:
-        "Landing page profissional desenvolvida para a divulgação de uma clínica psicológica.",
+      title: t.project3.title,
+      description: t.project3.description,
       tech: ["CSS3", "HTML5", "JavaScript"],
       image: project3,
       github: "https://github.com/ediicarllos/Landing_page_psc_01",
       demo: "https://ediicarllos.github.io/Landing_page_psc_01/",
     },
     {
-      title: "Organizador de Arquivos",
-      description:
-        "Um script em Python para organizar automaticamente os arquivos de uma pasta em subpastas de acordo com a extensão.",
+      title: t.project4.title,
+      description: t.project4.description,
       tech: ["Python"],
       image: project4,
       github: "https://github.com/ediicarllos/organizador-arquivos",
@@ -56,10 +56,10 @@ const Projects = () => {
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 scroll-reveal ${isInView ? 'is-visible' : ''}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Meus <span className="gradient-text">Projetos</span>
+              {t.title} <span className="gradient-text">{t.titleHighlight}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Alguns dos projetos que desenvolvi recentemente
+              {t.subtitle}
             </p>
           </div>
 
@@ -100,7 +100,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                     >
                       <Github className="h-4 w-4 mr-2" />
-                      Código
+                      {t.code}
                     </a>
                   </Button>
                   <Button size="sm" asChild>
@@ -110,7 +110,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                     >
                       <ExternalLink className="h-4 w-4 mr-2" />
-                      Demo
+                      {t.demo}
                     </a>
                   </Button>
                 </CardFooter>

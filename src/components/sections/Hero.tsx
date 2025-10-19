@@ -1,8 +1,13 @@
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/components/LanguageProvider"
+import { translations } from "@/lib/translations"
 import heroImage from "@/assets/hero-dev.jpg"
 
 const Hero = () => {
+  const { language } = useLanguage()
+  const t = translations[language].hero
+  
   const scrollToContact = () => {
     const element = document.getElementById("contact")
     if (element) {
@@ -31,11 +36,11 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-down">
-              Hello world! My name is{" "}
+              {t.greeting}{" "}
               <span className="gradient-text">Edi Carlos</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto stagger-1 animate-fade-in-up">
-              a full stack developer & data analysis enthusiast
+              {t.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 stagger-2 animate-scale-bounce">
               <Button
@@ -43,7 +48,7 @@ const Hero = () => {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground group hover-glow relative overflow-hidden"
               >
-                <span className="relative z-10">Vamos conversar</span>
+                <span className="relative z-10">{t.cta}</span>
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 <div className="absolute inset-0 shimmer-effect animate-shimmer" />
               </Button>
@@ -56,7 +61,7 @@ const Hero = () => {
                   if (element) element.scrollIntoView({ behavior: "smooth" })
                 }}
               >
-                Ver projetos
+                {t.viewProjects}
               </Button>
             </div>
             <div className="flex gap-6 justify-center stagger-3 animate-fade-in">

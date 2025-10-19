@@ -1,30 +1,34 @@
 import { Code2, Palette, Zap, Users } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { useInView } from "@/hooks/useInView"
+import { useLanguage } from "@/components/LanguageProvider"
+import { translations } from "@/lib/translations"
 
 const About = () => {
   const { ref, isInView } = useInView()
+  const { language } = useLanguage()
+  const t = translations[language].about
   
   const highlights = [
     {
       icon: Code2,
-      title: "Clean code",
-      description: "Desenvolvo soluções modernas e elegantes seguindo as melhores práticas do mercado",
+      title: t.highlight1Title,
+      description: t.highlight1Desc,
     },
     {
       icon: Palette,
-      title: "Modern Design",
-      description: "Interfaces intuitivas que encantam os usuários",
+      title: t.highlight2Title,
+      description: t.highlight2Desc,
     },
     {
       icon: Zap,
-      title: "Performance",
-      description: "Aplicações rápidas e otimizadas para todos os dispositivos",
+      title: t.highlight3Title,
+      description: t.highlight3Desc,
     },
     {
       icon: Users,
-      title: "Team Player",
-      description: "Trabalho em equipe com comunicação clara e efetiva",
+      title: t.highlight4Title,
+      description: t.highlight4Desc,
     },
   ]
 
@@ -34,55 +38,55 @@ const About = () => {
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 scroll-reveal ${isInView ? 'is-visible' : ''}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Sobre <span className="gradient-text">Mim</span>
+              {t.title} <span className="gradient-text">{t.titleHighlight}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Desenvolvedor Full Stack apaixonado por desenvolvimento web!
+              {t.subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className={`space-y-4 scroll-reveal-left delay-200 ${isInView ? 'is-visible' : ''}`}>
               <p className="text-lg leading-relaxed">
-                Opa! Tudo bom? Sou o Edi.. Católico e desenvolvedor Full Stack! atualmente com 26 anos, moro em Jaíba - MG. Desde jovem, sempre fui fascinado por tecnologia.
+                {t.intro1}
               </p>
               <p className="text-lg leading-relaxed">
-                Minha jornada no desenvolvimento web começou há pouco tempo, quando decidi aprender a criar meus próprios sites e aplicações. Desde então, tenho me dedicado a aprimorar minhas habilidades em diversas tecnologias, incluindo JavaScript, React, Node.js, entre outras.
+                {t.intro2}
               </p>
               <p className="text-lg leading-relaxed">
-                Acredito que uma boa aplicação não é apenas funcional, mas também deve proporcionar uma experiência agradável ao usuário. Por isso, sempre busco combinar design moderno com código limpo e eficiente.
+                {t.intro3}
               </p>
             </div>
 
             <div className={`glass-card rounded-2xl p-6 scroll-reveal-right delay-300 ${isInView ? 'is-visible' : ''}`}>
               <h3 className="text-xl font-semibold mb-4 gradient-text">
-                Minha Jornada
+                {t.journeyTitle}
               </h3>
               <div className="space-y-4">
                 <div className="flex gap-4">
                   <div className="w-3 h-3 rounded-full bg-primary mt-2 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold">jan 2025 - Presente</p>
+                    <p className="font-semibold">{t.journey1Date}</p>
                     <p className="text-sm text-muted-foreground">
-                      Desenvolvedor Full Stack com vários projetos desenvolvidos e entusiasta de Análise de dados
+                      {t.journey1Text}
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-3 h-3 rounded-full bg-accent mt-2 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold">jan 2025</p>
+                    <p className="font-semibold">{t.journey2Date}</p>
                     <p className="text-sm text-muted-foreground">
-                      Início da minha jornada como Desenvolvedor web
+                      {t.journey2Text}
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-3 h-3 rounded-full bg-muted mt-2 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold">fev 2024</p>
+                    <p className="font-semibold">{t.journey3Date}</p>
                     <p className="text-sm text-muted-foreground">
-                      Início da faculdade de Análise e Desenvolvimento de Sistemas
+                      {t.journey3Text}
                     </p>
                   </div>
                 </div>

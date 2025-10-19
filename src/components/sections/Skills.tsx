@@ -1,13 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { useInView } from "@/hooks/useInView"
+import { useLanguage } from "@/components/LanguageProvider"
+import { translations } from "@/lib/translations"
 
 const Skills = () => {
   const { ref, isInView } = useInView()
+  const { language } = useLanguage()
+  const t = translations[language].skills
   
   const skillCategories = [
     {
-      title: "Frontend",
+      title: t.frontend,
       skills: [
         { name: "React / Next.js", level: 42 },
         { name: "TypeScript", level: 28 },
@@ -16,7 +20,7 @@ const Skills = () => {
       ],
     },
     {
-      title: "Backend",
+      title: t.backend,
       skills: [
         { name: "Node.js", level: 41 },
         { name: "Java", level: 38 },
@@ -25,7 +29,7 @@ const Skills = () => {
       ],
     },
     {
-      title: "DevOps & Tools",
+      title: t.devops,
       skills: [
         { name: "Git / GitHub", level: 98 },
         { name: "Jira", level: 75 },
@@ -34,12 +38,12 @@ const Skills = () => {
       ],
     },
     {
-      title: "Soft Skills",
+      title: t.soft,
       skills: [
-        { name: "Trabalho em Equipe", level: 95 },
-        { name: "Comunicação", level: 90 },
-        { name: "Resolução de Problemas", level: 92 },
-        { name: "Aprendizado Rápido", level: 95 },
+        { name: t.teamwork, level: 95 },
+        { name: t.communication, level: 90 },
+        { name: t.problemSolving, level: 92 },
+        { name: t.fastLearning, level: 95 },
       ],
     },
   ]
@@ -52,10 +56,10 @@ const Skills = () => {
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 scroll-reveal ${isInView ? 'is-visible' : ''}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Minhas <span className="gradient-text">Habilidades</span>
+              {t.title} <span className="gradient-text">{t.titleHighlight}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tecnologias e ferramentas que domino
+              {t.subtitle}
             </p>
           </div>
 

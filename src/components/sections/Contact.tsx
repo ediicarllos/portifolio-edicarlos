@@ -6,10 +6,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import { useInView } from "@/hooks/useInView"
+import { useLanguage } from "@/components/LanguageProvider"
+import { translations } from "@/lib/translations"
 
 const Contact = () => {
   const { toast } = useToast()
   const { ref, isInView } = useInView()
+  const { language } = useLanguage()
+  const t = translations[language].contact
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,8 +23,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Responderei em breve!",
+      title: t.successTitle,
+      description: t.successDesc,
     })
     setFormData({ name: "", email: "", message: "" })
   }
@@ -28,20 +32,20 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t.email,
       value: "ediicarloscs@gmail.com",
       link: "mailto:ediicarloscs@gmail.com",
     },
     {
       icon: Phone,
-      title: "Telefone",
+      title: t.phone,
       value: "+55 (38) 9____-____",
       link: "tel:+5538_________",
     },
     {
       icon: MapPin,
-      title: "Localização",
-      value: "Minas Gerais, Brazil",
+      title: t.location,
+      value: t.locationValue,
       link: "#",
     },
   ]
@@ -54,10 +58,10 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto">
           <div className={`text-center mb-16 scroll-reveal ${isInView ? 'is-visible' : ''}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Entre em <span className="gradient-text">Contato</span>
+              {t.title} <span className="gradient-text">{t.titleHighlight}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Vamos conversar sobre seu próximo projeto
+              {t.subtitle}
             </p>
           </div>
 
@@ -92,11 +96,11 @@ const Contact = () => {
                       htmlFor="name"
                       className="text-sm font-medium"
                     >
-                      Nome
+                      {t.name}
                     </label>
                     <Input
                       id="name"
-                      placeholder="Seu nome"
+                      placeholder={t.namePlaceholder}
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -109,12 +113,12 @@ const Contact = () => {
                       htmlFor="email"
                       className="text-sm font-medium"
                     >
-                      Email
+                      {t.email}
                     </label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="seu@email.com"
+                      placeholder={t.emailPlaceholder}
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -128,11 +132,11 @@ const Contact = () => {
                     htmlFor="message"
                     className="text-sm font-medium"
                   >
-                    Mensagem
+                    {t.message}
                   </label>
                   <Textarea
                     id="message"
-                    placeholder="Sua mensagem..."
+                    placeholder={t.messagePlaceholder}
                     rows={6}
                     value={formData.message}
                     onChange={(e) =>
@@ -146,7 +150,7 @@ const Contact = () => {
                   size="lg"
                   className="w-full md:w-auto"
                 >
-                  Enviar Mensagem
+                  {t.send}
                   <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>

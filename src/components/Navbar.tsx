@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react"
-import { Moon, Sun, Menu, X, Download } from "lucide-react"
+import { Moon, Sun, Menu, X, Download, Languages } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/components/ThemeProvider"
+import { useLanguage } from "@/components/LanguageProvider"
+import { translations } from "@/lib/translations"
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const { language, toggleLanguage } = useLanguage()
+  const t = translations[language].nav
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,11 +29,11 @@ const Navbar = () => {
   }
 
   const navItems = [
-    { label: "Início", id: "home" },
-    { label: "Sobre", id: "about" },
-    { label: "Projetos", id: "projects" },
-    { label: "Skills", id: "skills" },
-    { label: "Contato", id: "contact" },
+    { label: t.home, id: "home" },
+    { label: t.about, id: "about" },
+    { label: t.projects, id: "projects" },
+    { label: t.skills, id: "skills" },
+    { label: t.contact, id: "contact" },
   ]
 
   return (
@@ -52,7 +56,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -74,20 +78,31 @@ const Navbar = () => {
               className="gap-2"
             >
               <Download className="h-4 w-4" />
-              Baixar CV
+              {t.downloadCV}
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleLanguage}
+                className="rounded-full"
+                aria-label="Toggle language"
+              >
+                <Languages className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="rounded-full"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -104,6 +119,15 @@ const Navbar = () => {
               className="rounded-full"
             >
               <Download className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleLanguage}
+              className="rounded-full"
+              aria-label="Toggle language"
+            >
+              <Languages className="h-5 w-5" />
             </Button>
             <Button
               variant="ghost"
