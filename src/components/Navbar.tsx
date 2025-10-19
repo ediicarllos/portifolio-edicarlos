@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Moon, Sun, Menu, X } from "lucide-react"
+import { Moon, Sun, Menu, X, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/components/ThemeProvider"
 
@@ -63,6 +63,20 @@ const Navbar = () => {
               </button>
             ))}
             <Button
+              variant="default"
+              size="sm"
+              onClick={() => {
+                const link = document.createElement('a')
+                link.href = '/cv.pdf'
+                link.download = 'cv.pdf'
+                link.click()
+              }}
+              className="gap-2"
+            >
+              <Download className="h-4 w-4" />
+              Baixar CV
+            </Button>
+            <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
@@ -78,6 +92,19 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
+            <Button
+              variant="default"
+              size="icon"
+              onClick={() => {
+                const link = document.createElement('a')
+                link.href = '/cv.pdf'
+                link.download = 'cv.pdf'
+                link.click()
+              }}
+              className="rounded-full"
+            >
+              <Download className="h-4 w-4" />
+            </Button>
             <Button
               variant="ghost"
               size="icon"
