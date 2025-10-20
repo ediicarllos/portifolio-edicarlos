@@ -14,6 +14,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark">
+      <Analytics /> {/* <- coloque aqui */}
       <LanguageProvider>
         <TooltipProvider>
           <Toaster />
@@ -21,17 +22,15 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          {/* Coloque o Analytics aqui, fora do BrowserRouter */}
-          <Analytics />
         </TooltipProvider>
       </LanguageProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );
+
 
 
 export default App;
