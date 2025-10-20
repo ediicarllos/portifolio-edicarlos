@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import { Analytics } from "@vercel/analytics/react";
 
 const queryClient = new QueryClient();
 
@@ -24,10 +25,13 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
+          {/* Coloque o Analytics aqui, fora do BrowserRouter */}
+          <Analytics />
         </TooltipProvider>
       </LanguageProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );
+
 
 export default App;
