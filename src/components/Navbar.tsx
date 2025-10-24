@@ -52,7 +52,7 @@ const Navbar = () => {
             }}
             className="text-2xl font-bold gradient-text"
           >
-            {"i'm <Dev/>"}
+            {"i'm <dev/>"}
           </a>
 
           {/* Desktop Menu */}

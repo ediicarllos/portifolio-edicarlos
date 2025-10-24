@@ -1,4 +1,4 @@
-import { Heart, Github, Linkedin, Mail } from "lucide-react"
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -16,9 +16,9 @@ const Footer = () => {
               href="https://github.com/ediicarllos"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-rotate-12"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125"
             >
-              <Github className="h-5 w-5" />
+              <FaGithub className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/ediicarlos/"
@@ -26,13 +26,15 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125"
             >
-              <Linkedin className="h-5 w-5" />
+              <FaLinkedin className="h-5 w-5" />
             </a>
             <a
-              href="mailto:dev@exemplo.com"
-              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:rotate-12"
+              href="https://www.instagram.com/edicarllos_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125"
             >
-              <Mail className="h-5 w-5" />
+              <FaInstagram className="h-5 w-5" />
             </a>
           </div>
         </div>

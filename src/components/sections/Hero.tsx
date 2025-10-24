@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
+import { FaGithub, FaLinkedin, FaInstagram, FaArrowRight } from "react-icons/fa";
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/LanguageProvider"
 import { translations } from "@/lib/translations"
@@ -49,7 +49,7 @@ const Hero = () => {
                 className="bg-primary hover:bg-primary/90 text-primary-foreground group hover-glow relative overflow-hidden"
               >
                 <span className="relative z-10">{t.cta}</span>
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 <div className="absolute inset-0 shimmer-effect animate-shimmer" />
               </Button>
               <Button
@@ -69,9 +69,9 @@ const Hero = () => {
                 href="https://github.com/ediicarllos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-rotate-6"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125"
               >
-                <Github className="h-6 w-6" />
+                <FaGithub className="h-6 w-6" />
               </a>
               <a
                 href="https://www.linkedin.com/in/ediicarlos/"
@@ -79,13 +79,15 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125"
               >
-                <Linkedin className="h-6 w-6" />
+                <FaLinkedin className="h-6 w-6" />
               </a>
               <a
-                href="mailto:ediicarloscs@gmail.com"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:rotate-6"
+                href="https://www.instagram.com/edicarllos_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125"
               >
-                <Mail className="h-6 w-6" />
+                <FaInstagram className="h-6 w-6" />
               </a>
             </div>
           </div>

@@ -39,14 +39,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: t.phone,
-      value: "+55 (38) 9____-____",
-      link: "tel:+5538_________",
+      value: "+55 (38) 9 9843-0475",
+      link: "tel:+553898430475",
     },
     {
       icon: MapPin,
       title: t.location,
       value: t.locationValue,
-      link: "#",
+      link: "https://maps.app.goo.gl/KdM69LUFcb6FfSQR9",
     },
   ]
 
@@ -74,6 +74,8 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <a
                     href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block group"
                   >
                     <info.icon className="h-10 w-10 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" />
